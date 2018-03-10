@@ -6,7 +6,7 @@ var app = express();
 app.use(morgan('combined'));
 
 var articleone = {
-  tite: 'ARTICLE ONE | PATEL KRUNAL',
+  tite: 'ARTICLE-ONE | PATEL KRUNAL',
   heading:'My head line for Article-one',
   date: 'March 10, 2018',
   content: `<p>
