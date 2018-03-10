@@ -5,11 +5,61 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var articleone = {
+  tite: 'ARTICLE ONE | PATEL KRUNAL',
+  heading:'My head line for Article-one',
+  date: 'March 10, 2018',
+  content: `<p>
+                This is my first paragraph of article one.This is my first paragraph of article one.This is my first paragraph of article one.This is my first paragraph of article one.This is my first paragraph of article one.This is my first paragraph of article one.This is my first paragraph of article one.This is my first paragraph of article one.
+            </p>
+            <p>
+                This is my second paragraph of article one.This is my second paragraph of article one.This is my second paragraph of article one.This is my second paragraph of article one.This is my second paragraph of article one.This is my second paragraph of article one.This is my second paragraph of article one.This is my second paragraph of article one.
+            </p>
+            <p>
+                This is my three paragraph of article one. This is my three paragraph of article one. This is my three paragraph of article one. This is my three paragraph of article one. This is my three paragraph of article one. This is my three paragraph of article one. This is my three paragraph of article one.
+            </p>`
+};
+
+function createTemplate (data){
+var title = data.title;
+var date = data.date;
+var heading = data.heading;
+var content = data.content;
+var htmlTemplate =`
+<html>
+    <head>
+        <title>${title}</title>
+        <meta name="viewport" content="width=device-width, intial-sale=1"/>
+        <link href="/ui/style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>${heading}</h1>
+        <div class="containor">
+            <div>
+            <a href="/">Home</a>
+        </div>
+        
+        <hr/>
+        
+        <div>
+            ${date}
+        </div>
+        <div>
+            ${content}
+            </div>
+        </div>
+    </body>
+</html>
+
+`;
+return htmlTemplate;
+}
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 app.get('/article-one', function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+    res.sendFile(createTemplate(articleone));
 });
 
 app.get('/article-two', function(req,res){
