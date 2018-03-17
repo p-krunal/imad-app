@@ -73,9 +73,8 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/counter', function (req,res) {
-    counter = counter + 1;
-    res.send(counter.toString());
+app.get('/counter', function (req, res) {
+  res.send(counter.toString());
 });
 app.get('/:articleName', function(req,res){
     //articelName == articele-one
